@@ -43,7 +43,7 @@ async def answer_login(message: types.Message, state: FSMContext):
         try:
             wl = data['wrong_login']
             if wl == 3:
-                await message.answer("<b>Process cancelled!</b> \nYou made a mistake more than 3 times.")
+                await message.answer("<b>Process cancelled!</b> \nYou made a mistake more than 3 times.", reply_markup=start_inline)
                 await state.reset_state()
                 return
             elif wl == 2:
@@ -75,7 +75,7 @@ async def answer_password(message: types.Message, state: FSMContext):
     data = await state.get_data()
     password = message.text
     if password == '/cancel':
-        await message.answer("<b>You canceled the password change process!</b>")
+        await message.answer("<b>You canceled the password change process!</b>", reply_markup=start_inline)
         await state.reset_state()
         return
 
@@ -86,7 +86,7 @@ async def answer_password(message: types.Message, state: FSMContext):
         try:
             wp = data['wrong_password']
             if wp == 3:
-                await message.answer("<b>Process cancelled!</b> \nYou made a mistake more than 3 times.")
+                await message.answer("<b>Process cancelled!</b> \nYou made a mistake more than 3 times.", reply_markup=start_inline)
                 await state.reset_state()
                 return
             elif wp == 2:
@@ -118,7 +118,7 @@ async def answer_password(message: types.Message, state: FSMContext):
 async def answer_new_password(message: types.Message, state: FSMContext):
     new_password = message.text
     if new_password == '/cancel':
-        await message.answer("<b>You canceled the password change process!</b>")
+        await message.answer("<b>You canceled the password change process!</b>", reply_markup=start_inline)
         await state.reset_state()
         return
 
