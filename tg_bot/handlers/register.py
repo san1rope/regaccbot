@@ -34,7 +34,7 @@ async def start_register(target: types.Message | types.CallbackQuery):
 async def answer_login(message: types.Message, state: FSMContext):
     temp = message.text
     if temp == '/cancel':
-        await message.answer("You cancelled the registration!")
+        await message.answer("You cancelled the registration!", reply_markup=start_inline)
         await state.reset_state()
         return
 
@@ -61,7 +61,7 @@ async def answer_login(message: types.Message, state: FSMContext):
 async def end_register(message: types.Message, state: FSMContext):
     temp = message.text
     if temp == '/cancel':
-        await message.answer("You cancelled the registration!")
+        await message.answer("You cancelled the registration!", reply_markup=start_inline)
         await state.reset_state()
         return
 
